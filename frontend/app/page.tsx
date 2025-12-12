@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useUser, SignInButton } from "@clerk/nextjs";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
   const { isSignedIn, isLoaded } = useUser();
+  const router = useRouter();
 
   const handleScanClick = () => {
     if (!isSignedIn) {
@@ -19,7 +21,14 @@ export default function Home() {
       return;
     }
 
-    console.log("User is signed in, proceed with agent");
+    if (!inputValue.trim()) {
+      toast("Missing input", {
+        description: "Please tell us about your startup first.",
+      });
+      return;
+    }
+
+    router.push(`/chat?q=${encodeURIComponent(inputValue)}`);
   };
 
   if (!isLoaded) return null;
