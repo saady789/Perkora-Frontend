@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Sparkles, Cloud, Code, Megaphone, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
@@ -64,6 +65,9 @@ export default function Home() {
           Scan My Perks
           <ArrowRight className="ml-2 w-5 h-5" />
         </Button>
+        <a href="/api/auth/sso/init">
+          <button className="your classes here">Sign in with SSO</button>
+        </a>
 
         {/* Trust line */}
         <p className="text-gray-400 text-sm mt-6">
