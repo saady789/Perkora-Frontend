@@ -22,20 +22,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <ClerkProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ClerkProvider>
           <Appbar />
           <Toaster richColors position="top-center" />
-          {children}
-        </body>
-      </ClerkProvider>
+
+          {/* IMPORTANT: push content below fixed Appbar */}
+          <div className="pt-16">{children}</div>
+        </ClerkProvider>
+      </body>
     </html>
   );
 }

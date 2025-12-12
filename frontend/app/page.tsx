@@ -61,11 +61,11 @@ export default function Home() {
             className="h-14 bg-white/10 border-white/20 placeholder-gray-400 text-white"
           />
 
-          <div className="flex flex-wrap gap-2 justify-center mt-4">
+          {/* <div className="flex flex-wrap gap-2 justify-center mt-4">
             <Tag label="Cloud credits" Icon={Cloud} />
             <Tag label="Dev tools" Icon={Code} />
             <Tag label="Marketing tools" Icon={Megaphone} />
-          </div>
+          </div> */}
         </div>
 
         {!isSignedIn ? (
